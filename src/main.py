@@ -1,16 +1,54 @@
 from node.node import *
 from stack.stack import *
 from stack.balancedparens import *
+from stack.calculator import *
+from stack.serialsearch import *
 
 def main():
     # testPush()
     # testPop()
     # testIsEmpty()
     # testPeek()
-    print("Parenthesis are balanced?", balancedparens.isBalanced("{X+Y"))   # False
-    print("Parenthesis are balanced?", balancedparens.isBalanced("{X+Y)"))  # False
-    print("Parenthesis are balanced?", balancedparens.isBalanced("({X+Y}*Z)"))  # True
-    print("Parenthesis are balanced?", balancedparens.isBalanced("[A+B]*({X+Y}*Z)"))    # True
+    # print("Parenthesis are balanced?", balancedparens.isBalanced("{X+Y"))   # False
+    # print("Parenthesis are balanced?", balancedparens.isBalanced("{X+Y)"))  # False
+    # print("Parenthesis are balanced?", balancedparens.isBalanced("({X+Y}*Z)"))  # True
+    # print("Parenthesis are balanced?", balancedparens.isBalanced("[A+B]*({X+Y}*Z)"))    # True
+    # print("(((6+9)/3)*(6-4)) = ", calculator.evaluate("(((6+9)/3)*(6-4))"))
+    # print("(6+(3*(6-4))) = ", calculator.evaluate("(6+(3*(6-4)))"))
+    # print("((5+2)-(3*(6/9))) = ", calculator.evaluate("((5+2)-(3*(6/9)))"))
+    # print("((5*2)-(3*(6/2))) = ", calculator.evaluate("((5*2)-(3*(6/2)))"))
+    testSerialSearch()
+
+def testSerialSearch():
+    # create an empty stack
+    a = stack()
+    # initialize first
+    first = 1
+    # initialize size
+    size = 7
+    # initialize target
+    target = 70
+
+    # push -7 onto the top of the stack
+    a.push(-7)
+    # push 42 onto the top of the stack
+    a.push(42)
+    # push 70 onto the top of the stack
+    a.push(70)
+    # push 39 onto the top of the stack
+    a.push(39)
+    # push 3 onto the top of the stack
+    a.push(3)
+    # push 63 onto the top of the stack
+    a.push(63)
+    # push 8 onto the top of the stack
+    a.push(8)   # [8 63 3 39 70 42 -7]
+
+    # print the stack
+    print(a)
+
+    # call serial search method and display its return.
+    print(target, 'found at node position', serialsearch(a, first, size, target))
 
 def testPeek():
     print("Testing Peek Method in Stack Class")
